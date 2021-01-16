@@ -5,6 +5,8 @@ let me just do something real quick
 
 
 from models import Note, Theme, Connection
+from editor import get_user_input
+from notebook import Notebook
 
 
 def test_notes():
@@ -32,13 +34,29 @@ def test_connections(test_notes):
         "Shoulb be hello_world -> goodbye world"
         )
     assert str(first_connection.connection_type()) == "note -> note", (
-        "Should be note -> note"
+        "should be note -> note"
         )
     print("new connections added succesfully")
+
+
+def test_get_user_input():
+    raw = get_user_input()
+    raw_input = input("type the same you just typed, close with enter.\n")
+    assert raw == raw_input, raw + " should be " + raw_input 
+    print("get_user_input testes succesfully")
+
+
+def test_new_notebook_note():
+    new_notebook = Notebook()
+    new_notebook.add_note()
+    print(new_notebook)
+    print("new notebook added succesfully")
 
 
 if __name__ == "__main__":
     test_notes = test_notes()
     test_connections(test_notes)
     test_themes()
+    test_get_user_input()
+    test_new_notebook_note()
     print("\nall tests passed")
