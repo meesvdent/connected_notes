@@ -13,7 +13,7 @@ def test_notes():
     print("testing new notes")
     first_note = Note("hello_world")
     second_note = Note("goodbye_world")
-    assert str(first_note) == "hello_world", "Should be hello_wolrd"
+    assert repr(first_note) == "note: hello_world", "should be: note: hello_world" 
     print("new notes added succesfully")
     return [first_note, second_note]
 
@@ -42,21 +42,40 @@ def test_connections(test_notes):
 def test_get_user_input():
     raw = get_user_input()
     raw_input = input("type the same you just typed, close with enter.\n")
-    assert raw == raw_input, raw + " should be " + raw_input 
+    assert raw == raw_input, raw + " should be " + raw_input
     print("get_user_input testes succesfully")
 
 
 def test_new_notebook_note():
     new_notebook = Notebook()
-    new_notebook.add_note()
+    new_note = "a wonderful note"
+    second_note = "an ugly note"
+    new_notebook.add_note(new_note)
+    new_notebook.add_note(second_note)
     print(new_notebook)
     print("new notebook added succesfully")
+    return new_notebook
 
+def test_new_notebook_theme(test_notebook):
+    new_theme = "wonderfulness"
+    test_notebook.add_theme(new_theme)
+    print(test_notebook)
+    print("new theme added succesfully")
+    return test_notebook
+
+def test_new_notebook_connection(test_notebook):
+    a = test_notebook.components[0]
+    b = test_notebook.components[1]
+    test_notebook.add_connection(a, b)
+    print(test_notebook)
+    print("new notebook added succesfully")
 
 if __name__ == "__main__":
     test_notes = test_notes()
     test_connections(test_notes)
     test_themes()
-    test_get_user_input()
-    test_new_notebook_note()
+#    test_get_user_input()
+    test_notebook = test_new_notebook_note()
+    test_notebook = test_new_notebook_theme(test_notebook)
+    test_notebook = test_new_notebook_connection(test_notebook)
     print("\nall tests passed")
