@@ -1,6 +1,5 @@
 """
-come on, let's try to write a proper test this time
-let me just do something real quick
+Test functions
 """
 
 

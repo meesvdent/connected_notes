@@ -1,19 +1,6 @@
 """
 models for the connected notes program
 
-warning, this commit was written while halfway into my third gt
-
-
-
-So what we should do?
-
-First I just want to make a class which stores my notes.
-It should store:
-    * Notes
-    * Note numbersss
-    * Nothing more? Connections are saved in a database?
-    * What's right here? Adding it to my let's find out list
-
 """
 
 
@@ -39,7 +26,6 @@ class Node():
 class Note(Node):
     """
     Stores notes
-    That's it
     """
 
     def __init__(self, note):
@@ -62,7 +48,6 @@ class Theme(Node):
 class Connection():
     """
     Stores connections
-    Adds connections
     """
 
     def __init__(self, from_node, to_node):

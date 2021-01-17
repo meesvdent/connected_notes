@@ -19,5 +19,3 @@
 * Print a graph
 
 
-ok, let's make a database
-is that doing it the *right* way? who knows...
