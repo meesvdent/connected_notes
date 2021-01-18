@@ -3,7 +3,8 @@ Test functions
 """
 
 
-from models import Note, Theme, Connection
+from vertices import Note, Theme
+from edges import Edge
 from editor import get_user_input
 from notebook import Notebook
 
@@ -28,11 +29,11 @@ def test_connections(test_notes):
     print("testing new connections")
     first_note = test_notes[0]
     second_note = test_notes[1]
-    first_connection = Connection(first_note, second_note)
-    assert str(first_connection) == "hello_world -> goodbye_world", (
+    first_connection = Edge(first_note, second_note, "undirected")
+    assert str(first_connection) == "hello_world <-> goodbye_world", (
         "Shoulb be hello_world -> goodbye world"
         )
-    assert str(first_connection.connection_type()) == "note -> note", (
+    assert str(first_connection.connection_type()) == "note <-> note", (
         "should be note -> note"
         )
     print("new connections added succesfully")
@@ -65,7 +66,7 @@ def test_new_notebook_theme(test_notebook):
 def test_new_notebook_connection(test_notebook):
     a = test_notebook.components[0]
     b = test_notebook.components[1]
-    test_notebook.add_connection(a, b)
+    test_notebook.add_undirected_edge(a, b)
     print(test_notebook)
     print("new notebook added succesfully")
 

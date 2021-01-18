@@ -14,6 +14,14 @@
 * Graph storing connections
 * Everything can be connected
 
+#### One way connections
+* Directed
+* Parts which follow each other up in a certain order
+
+#### Two way connections
+* Not directed
+* Functions like a *tag* when undirected connection to a theme
+
 
 ## Functions
 * Print a graph
