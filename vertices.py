@@ -31,6 +31,29 @@ class Note(Node):
     def __init__(self, note):
         self.content = note
         self.node_type = "note"
+        self.tags = None
+        self.connected_notes = None
+        self.tags = []
+
+    def _parse_note(self):
+        raw = self.content
+        if self.tags == None:
+            self.tags = list(self._parse_tags())
+        if self.connected_notes == None:
+            self.connected_notes = list(self._parse_connected_notes())
+
+    def _parse_tags(self):
+        unparsed = self.content
+        while parse_complete == False:
+            if tagsymbol not in unparsed:
+                parse_complete = True
+            unparsed = unparsed.split(tagsymbol, 1)[1]
+            new_tag = unparsed.split(" ", 1)[0]
+            self.tags.append(new_tag)
+
+
+    def _parse_connected_notes(self):
+        pass
 
 
 class Theme(Node):
